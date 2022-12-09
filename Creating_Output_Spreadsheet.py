@@ -116,6 +116,8 @@ Combined_ws['W4'] = 2025
 #Add Title
 Combined_ws['A1'] = 'Analyst Estimate Changes (Exercise)'
 Combined_ws['A2'] = dt.now()
+Combined_ws.merge_cells('A1:C1')
+Combined_ws.merge_cells('A2:C2')
 
 
 
