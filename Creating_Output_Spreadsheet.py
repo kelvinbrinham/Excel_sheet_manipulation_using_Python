@@ -6,6 +6,8 @@ import numpy as np
 import openpyxl as xl
 import datetime
 from datetime import datetime as dt
+import xlsxwriter as xlw
+from string import ascii_uppercase as UPPER
 
 
 GS_df = pd.read_excel('Data_Formatted/EPS_CHANGE_20221028_GS_FORMATTED.xlsx')
@@ -42,8 +44,21 @@ Combined_df = Combined_df[['Ticker', 'Company Name', 'Broker', 'currency', 'y1_E
 'y1_sales chg', 'y2_sales chg', 'y3_sales chg', 'y1_EBIT chg', 'y2_EBIT chg', 'y3_EBIT chg']]
 
 
+Output_file_name = 'Data_FORMATTED/Combined_OUTPUT.xlsx'
+Combined_df.to_excel(Output_file_name, sheet_name='Sheet1', startrow = 2, index = False)
 
-Combined_df.to_excel('Data_Formatted/OUTPUT.xlsx', sheet_name='Sheet1')
+
+Combined_wb = xl.load_workbook(Output_file_name)
+Combined_ws = Combined_wb.active
+
+#Change relevant values to percentages
+#These are the letters of columns that should be in percentage format
+set_of_percentage_column_letters = ['E', 'F', 'G', 'H', 'I', 'J', 'R', 'S', 'T', 'U', 'V', 'W']
+#Loop over these columns and change into percentage format (ignoring missing data)
+for letter in set_of_percentage_column_letters:
+    for i in range(4, 87 + 1, 1): #4-87
+        if Combined_ws[letter + str(i)] != 'N/A':
+            Combined_ws[letter + str(i)].number_format = '0.00%'
 
 
-# print(Combined_df)
+Combined_wb.save(Output_file_name)
