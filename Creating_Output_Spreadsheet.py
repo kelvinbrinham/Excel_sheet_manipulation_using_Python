@@ -59,7 +59,12 @@ set_of_percentage_column_letters = ['E', 'F', 'G', 'H', 'I', 'J', 'R', 'S', 'T',
 for letter in set_of_percentage_column_letters:
     for i in range(5, 87 + 1, 1): #4-87
         if Combined_ws[letter + str(i)] != 'N/A':
-            Combined_ws[letter + str(i)].number_format = '0.00%'
+            Combined_ws[letter + str(i)].number_format = '0.0%'
+
+for letter in ['K', 'O']:
+    for i in range(5, 87 + 1, 1): #4-87
+        if Combined_ws[letter + str(i)] != 'N/A':
+            Combined_ws[letter + str(i)].number_format = '0.0'
 
 
 #Changing Headers from my code names to readable names
