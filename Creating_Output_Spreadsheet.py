@@ -45,7 +45,7 @@ Combined_df = Combined_df[['Ticker', 'Company Name', 'Broker', 'currency', 'y1_E
 
 
 Output_file_name = 'Data_FORMATTED/Combined_OUTPUT.xlsx'
-Combined_df.to_excel(Output_file_name, sheet_name='Sheet1', startrow = 2, index = False)
+Combined_df.to_excel(Output_file_name, sheet_name='Sheet1', startrow = 3, index = False)
 
 
 Combined_wb = xl.load_workbook(Output_file_name)
@@ -60,5 +60,9 @@ for letter in set_of_percentage_column_letters:
         if Combined_ws[letter + str(i)] != 'N/A':
             Combined_ws[letter + str(i)].number_format = '0.00%'
 
+
+#Changing Headers from my code names to readable names
+# Combined_ws
+# Combined_ws['E3'] =
 
 Combined_wb.save(Output_file_name)
