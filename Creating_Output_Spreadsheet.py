@@ -10,7 +10,13 @@ import xlsxwriter as xlw
 from string import ascii_uppercase as UPPER
 from openpyxl.styles import Border,Side
 
+#First, run the four scripts each responsible for reading the relevant data from the input sheets
+import Collecting_Excel_Data_JPMCAZ
+import Collecting_Excel_Data_GS
+import Collecting_Excel_Data_MS
+import Collecting_Excel_Data_INTERMONTE
 
+#Read in the input sheets
 GS_df = pd.read_excel('Data_Formatted/EPS_CHANGE_20221028_GS_FORMATTED.xlsx')
 MS_df = pd.read_excel('Data_Formatted/EPS_CHANGES_20221028_MS_FORMATTED.xlsx')
 JPMCAZ_df = pd.read_excel('Data_FORMATTED/EPS_CHANGE_20221028_JPMCAZ_FORMATTED.xlsx')
