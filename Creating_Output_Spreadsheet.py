@@ -57,14 +57,14 @@ Combined_ws = Combined_wb.active
 set_of_percentage_column_letters = ['E', 'F', 'G', 'H', 'I', 'J', 'R', 'S', 'T', 'U', 'V', 'W']
 #Loop over these columns and change into percentage format (ignoring missing data)
 for letter in set_of_percentage_column_letters:
-    for i in range(5, 87 + 1, 1): #4-87
+    for i in range(5, 88 + 1, 1): #4-87
         if Combined_ws[letter + str(i)] != 'N/A':
             Combined_ws[letter + str(i)].number_format = '0.0%'
 
 for letter in ['K', 'O']:
-    for i in range(5, 87 + 1, 1): #4-87
+    for i in range(5, 88 + 1, 1): #4-87
         if Combined_ws[letter + str(i)] != 'N/A':
-            Combined_ws[letter + str(i)].number_format = '0.0'
+            Combined_ws[letter + str(i)].number_format = '0.00'
 
 
 #Changing Headers from my code names to readable names

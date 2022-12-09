@@ -28,6 +28,9 @@ JPMCAZ_Data_df = pd.read_excel('Data/EPS_CHANGE_20221028_JPMCAZ.xlsx', header = 
 for j in range(0, 60, 2):
     Ticker_df = JPMCAZ_Data_df.iloc[[j, j+1]]
 
+    #Ensure dictionary is empty
+    Ticker_dict.update((key, np.nan) for key in Ticker_dict) 
+
     Ticker_dict['Broker'] = 'JPMCAZ'
     Ticker_dict['Company Name'] = Ticker_df['Company Name'].iloc[0][0]
     Ticker_dict['Ticker'] = Ticker_df[JPMCAZ_dict.get('Ticker')].iloc[0][0]
@@ -38,6 +41,7 @@ for j in range(0, 60, 2):
     for i in range(2):
         year = Ticker_df.iloc[i, 2]
         year_number = year_dict.get(year)
+
         if year_number:
             Ticker_dict[f'{year_number}_PE'] = Ticker_df.iloc[i, 8]
             Ticker_dict[f'{year_number}_EPS chg'] = Ticker_df.iloc[i, 3]

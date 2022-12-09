@@ -26,6 +26,9 @@ GS_Data_df = GS_Data_df.drop(GS_Data_df.columns[[0]], axis=1)
 for j in range(0, 70, 4):
     Ticker_df = GS_Data_df.iloc[[j + x for x in range(4)]]
 
+    #Ensure dictionary is empty
+    Ticker_dict.update((key, np.nan) for key in Ticker_dict) 
+
     Ticker_dict['Broker'] = 'GS'
     Ticker_dict['Company Name'] = Ticker_df['Company Name'].iloc[0][0]
     Ticker_dict['Ticker'] = Ticker_df[GS_dict.get('Ticker')].iloc[0][0]

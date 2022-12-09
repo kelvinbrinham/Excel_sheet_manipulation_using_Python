@@ -41,6 +41,9 @@ for j in range(2, 16, 2):
 
     Ticker_df = INTERMONTE_Data_df.iloc[[j, j+1]].reset_index(drop=True)
 
+    #Ensure dictionary is empty
+    Ticker_dict.update((key, np.nan) for key in Ticker_dict) 
+
     Ticker_dict['Broker'] = 'INTERMONTE'
     Ticker_dict['Company Name'] = Ticker_df.iloc[0,0]
     Ticker_dict['Ticker'] = Ticker_df.iloc[0,1]

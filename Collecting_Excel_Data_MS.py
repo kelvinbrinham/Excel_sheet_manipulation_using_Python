@@ -28,6 +28,10 @@ MS_Data_df = pd.read_excel('Data/EPS_CHANGES_20221028_MS.xls', header = [0,1])
 
 for j in range(0, 58, 2):
     Ticker_df = MS_Data_df.iloc[[j, j+1]]
+
+    #Ensure dictionary is empty
+    Ticker_dict.update((key, np.nan) for key in Ticker_dict)
+    
     Ticker_dict['Broker'] = 'MS'
     Ticker_dict['Company Name'] = Ticker_df.iloc[0,0]
     Ticker_dict['Ticker'] = Ticker_df.iloc[0,1]
