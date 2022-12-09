@@ -56,13 +56,41 @@ Combined_ws = Combined_wb.active
 set_of_percentage_column_letters = ['E', 'F', 'G', 'H', 'I', 'J', 'R', 'S', 'T', 'U', 'V', 'W']
 #Loop over these columns and change into percentage format (ignoring missing data)
 for letter in set_of_percentage_column_letters:
-    for i in range(4, 87 + 1, 1): #4-87
+    for i in range(5, 87 + 1, 1): #4-87
         if Combined_ws[letter + str(i)] != 'N/A':
             Combined_ws[letter + str(i)].number_format = '0.00%'
 
 
 #Changing Headers from my code names to readable names
-# Combined_ws
-# Combined_ws['E3'] =
+
+Combined_ws['E3'] = 'EPS change'
+Combined_ws['E4'] = 2023
+Combined_ws['F4'] = 2024
+Combined_ws['G4'] = 2025
+
+Combined_ws['H3'] = 'new EPS vs Cons'
+Combined_ws['H4'] = 2023
+Combined_ws['I4'] = 2024
+Combined_ws['J4'] = 2025
+
+Combined_ws['K3'] = 'P/E'
+Combined_ws['K4'] = 2023
+Combined_ws['L4'] = 2024
+Combined_ws['M4'] = 2025
+
+Combined_ws['O3'] = 'new EPS'
+Combined_ws['O4'] = 2023
+Combined_ws['P4'] = 2024
+Combined_ws['Q4'] = 2025
+
+Combined_ws['R3'] = 'Sales change'
+Combined_ws['R4'] = 2023
+Combined_ws['S4'] = 2024
+Combined_ws['T4'] = 2025
+
+Combined_ws['U3'] = 'EBIT change'
+Combined_ws['U4'] = 2023
+Combined_ws['V4'] = 2024
+Combined_ws['W4'] = 2025
 
 Combined_wb.save(Output_file_name)
