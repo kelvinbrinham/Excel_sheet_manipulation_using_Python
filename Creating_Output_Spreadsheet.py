@@ -8,6 +8,7 @@ import datetime
 from datetime import datetime as dt
 import xlsxwriter as xlw
 from string import ascii_uppercase as UPPER
+from openpyxl.styles import Border,Side
 
 
 GS_df = pd.read_excel('Data_Formatted/EPS_CHANGE_20221028_GS_FORMATTED.xlsx')
@@ -63,34 +64,59 @@ for letter in set_of_percentage_column_letters:
 
 #Changing Headers from my code names to readable names
 
+thin_border = Border(left=Side(style='thin'),
+                     right=Side(style='thin'),
+                     top=Side(style='thin'),
+                     bottom=Side(style='thin'))
+
+
 Combined_ws['E3'] = 'EPS change'
+Combined_ws['E3'].border = thin_border
+Combined_ws.merge_cells('E3:G3')
 Combined_ws['E4'] = 2023
 Combined_ws['F4'] = 2024
 Combined_ws['G4'] = 2025
 
 Combined_ws['H3'] = 'new EPS vs Cons'
+Combined_ws['H3'].border = thin_border
+Combined_ws.merge_cells('H3:J3')
 Combined_ws['H4'] = 2023
 Combined_ws['I4'] = 2024
 Combined_ws['J4'] = 2025
 
 Combined_ws['K3'] = 'P/E'
+Combined_ws['K3'].border = thin_border
+Combined_ws.merge_cells('K3:M3')
 Combined_ws['K4'] = 2023
 Combined_ws['L4'] = 2024
 Combined_ws['M4'] = 2025
 
 Combined_ws['O3'] = 'new EPS'
+Combined_ws['O3'].border = thin_border
+Combined_ws.merge_cells('O3:Q3')
 Combined_ws['O4'] = 2023
 Combined_ws['P4'] = 2024
 Combined_ws['Q4'] = 2025
 
 Combined_ws['R3'] = 'Sales change'
+Combined_ws['R3'].border = thin_border
+Combined_ws.merge_cells('R3:T3')
 Combined_ws['R4'] = 2023
 Combined_ws['S4'] = 2024
 Combined_ws['T4'] = 2025
 
 Combined_ws['U3'] = 'EBIT change'
+Combined_ws['U3'].border = thin_border
+Combined_ws.merge_cells('U3:W3')
 Combined_ws['U4'] = 2023
 Combined_ws['V4'] = 2024
 Combined_ws['W4'] = 2025
+
+
+#Add Title
+Combined_ws['A1'] = 'Analyst Estimate Changes (Exercise)'
+Combined_ws['A2'] = dt.now()
+
+
 
 Combined_wb.save(Output_file_name)
