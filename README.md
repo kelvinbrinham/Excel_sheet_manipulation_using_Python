@@ -1,4 +1,5 @@
-# Excel_sheet_manipulation_using_Python
+# Financial_Excel_Sheet_Manipulation_in_Python
+
 Here I collect relevant equity data from 5 differently formatted Excel sheets (from different brokers) and output them in one final organised Excel sheet.
 
 There are several scripts, but you only need to run Creating_Output_Spreadsheet.py (the other scripts read the input spreadsheets and are called in 
